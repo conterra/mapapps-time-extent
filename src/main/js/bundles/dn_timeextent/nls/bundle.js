@@ -22,7 +22,9 @@ module.exports = {
             title: "Time Extent",
             tooltip: "Time Extent"
         },
-        ui: {}
+        ui: {
+            filter: "Set Filter"
+        }
     },
     de: true
 };

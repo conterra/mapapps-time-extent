@@ -10,6 +10,75 @@
     "icon": {},
     "license": {},
     "productName": "devnet-mapapps-time-extent",
-    "layout-widgets": [],
-    "components": []
+    "layout-widgets": [
+        {
+            "widgetRole": "timeExtentWidget",
+            "window": {
+                "title": "${windowTitle}",
+                "dockTool": "timeExtentToggleTool",
+                "closable": true,
+                "maximizable": true,
+                "minimizeOnClose": true,
+                "resizable": true,
+                "marginBox": {
+                    "w": 320,
+                    "h": 330
+                },
+                "minSize": {
+                    "w": 320,
+                    "h": 330
+                },
+                "windowClass": "timeextent-window"
+            }
+        }
+    ],
+    "components": [
+        {
+            "name": "TimeExtentToggleTool",
+            "impl": "ct/tools/Tool",
+            "provides": [
+                "ct.tools.Tool"
+            ],
+            "propertiesConstructor": true,
+            "properties": {
+                "id": "timeExtentToggleTool",
+                "title": "${tool.title}",
+                "tooltip": "${tool.tooltip}",
+                "iconClass": "icon-calendar",
+                "toolRole": "toolset",
+                "togglable": true,
+                "rules": {
+                    "noGroup": true
+                }
+            }
+        },
+        {
+            "name": "TimeExtentWidgetFactory",
+            "provides": [
+                "dijit.Widget"
+            ],
+            "instanceFactory": true,
+            "properties": {
+                "widgetRole": "timeExtentWidget"
+            },
+            "references": [
+                {
+                    "name": "_timeExtentWidgetModel",
+                    "providing": "dn_timeextent.TimeExtentWidgetModel"
+                }
+            ]
+        },
+        {
+            "name": "TimeExtentWidgetModel",
+            "provides": "dn_timeextent.TimeExtentWidgetModel",
+            "properties": {
+            },
+            "references": [
+                {
+                    "name": "_mapWidgetModel",
+                    "providing": "map-widget.MapWidgetModel"
+                }
+            ]
+        }
+    ]
 }

@@ -117,7 +117,14 @@
         "map-init": {
             "Config": {
                 "map": {
-                    "layers": [],
+                    "layers": [
+                        {
+                            "id": "hurricane",
+                            "title": "Hurricane",
+                            "type": "AGS_FEATURE",
+                            "url": "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Hurricanes/MapServer/0"
+                        }
+                    ],
                     "basemap": "streets",
                     "ground": {
                         "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
@@ -205,7 +212,8 @@
                             "zoomOutTool",
                             "compassTool",
                             "restoreInitialViewTool",
-                            "viewmodeSwitcherTool"
+                            "viewmodeSwitcherTool",
+                            "timeExtentToggleTool"
                         ],
                         "registerWidget": {
                             "widgetRole": "mapview_tools"

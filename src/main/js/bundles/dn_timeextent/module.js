@@ -15,3 +15,5 @@
  */
 import ".";
 import "ct/tools/Tool";
+import "./TimeExtentWidgetFactory";
+import "./TimeExtentWidgetModel"
