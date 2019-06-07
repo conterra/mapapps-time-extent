@@ -18,6 +18,10 @@ export default class TimeExtentWidgetFactory {
         let model = this._timeExtentWidgetModel;
         widget.i18n = this._i18n.get().ui;
 
+        // listen to view model methods
+        vm.$on('startup', () => {
+
+        });
         widget.$on('setFilter', () => {
             model.setFilter();
         });

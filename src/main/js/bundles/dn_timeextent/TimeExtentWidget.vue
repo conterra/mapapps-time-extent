@@ -43,6 +43,9 @@
                 type: String,
                 default: ""
             }
+        },
+        mounted: function () {
+            this.$emit('startup');
         }
     };
 </script>
