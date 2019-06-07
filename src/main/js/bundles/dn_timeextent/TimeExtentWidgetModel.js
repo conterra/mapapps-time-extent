@@ -23,12 +23,12 @@ export default declare({
     locale: "en",
     layers: [],
     selectedLayerIds: [],
-    dateStartFormatted: "",
-    dateEndFormatted: "",
-    dateStart: "",
-    dateEnd: "",
-    timeStart: "",
-    timeEnd: "",
+    startDateFormatted: "",
+    endDateFormatted: "",
+    startDate: "",
+    endDate: "",
+    startTime: "",
+    endTime: "",
 
     activate() {
         this.locale = Locale.getCurrent().getLanguage();
@@ -44,16 +44,17 @@ export default declare({
             this.selectedLayerIds = [this.layers[0].id];
         });
 
-        this.dateStart = "2000-08-01";
-        this.dateEnd = "2000-10-01";
-        this.timeStart = "00:00";
-        this.timeEnd = "00:00";
+        let properties = this._properties;
+        this.startDate = properties.startDate;
+        this.endDate = properties.endDate;
+        this.startTime = properties.startTime;
+        this.endTime = properties.endTime;
     },
 
     setFilter() {
         const timeExtent = new TimeExtent({
-            start: new Date(this.dateStartFormatted + " " + this.timeStart + ":00 UTC"),
-            end: new Date(this.dateEndFormatted + " " + this.timeEnd + ":00 UTC")
+            start: new Date(this.startDateFormatted + " " + this.startTime + ":00 UTC"),
+            end: new Date(this.endDateFormatted + " " + this.endTime + ":00 UTC")
         });
 
         let filter = new FeatureFilter({

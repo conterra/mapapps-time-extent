@@ -35,7 +35,7 @@
                     ref="menuStart"
                     v-model="menuStart"
                     :close-on-content-click="false"
-                    :return-value.sync="dateStart"
+                    :return-value.sync="startDate"
                     lazy
                     transition="scale-transition"
                     offset-y
@@ -44,7 +44,7 @@
                     min-width="290px">
                     <template v-slot:activator="{ on }">
                         <v-text-field
-                            v-model="dateStartFormatted"
+                            v-model="startDateFormatted"
                             label="Date"
                             prepend-icon="event"
                             class="pa-0"
@@ -55,7 +55,7 @@
                         />
                     </template>
                     <v-date-picker
-                        v-model="dateStart"
+                        v-model="startDate"
                         :locale="locale"
                         scrollable
                         full-width>
@@ -68,7 +68,7 @@
                         <v-btn
                             flat
                             color="primary"
-                            @click="$refs.menuStart.save(dateStart)">{{ i18n.ok }}
+                            @click="$refs.menuStart.save(startDate)">{{ i18n.ok }}
                         </v-btn>
                     </v-date-picker>
                 </v-menu>
@@ -80,7 +80,7 @@
                     ref="menuStartTime"
                     v-model="menuStartTime"
                     :close-on-content-click="false"
-                    :return-value.sync="timeStart"
+                    :return-value.sync="startTime"
                     lazy
                     transition="scale-transition"
                     offset-y
@@ -89,7 +89,7 @@
                     min-width="290px">
                     <template v-slot:activator="{ on }">
                         <v-text-field
-                            v-model="timeStart"
+                            v-model="startTime"
                             label="Date"
                             prepend-icon="access_time"
                             class="pa-0"
@@ -100,7 +100,7 @@
                         />
                     </template>
                     <v-time-picker
-                        v-model="timeStart"
+                        v-model="startTime"
                         format="24hr"
                         scrollable
                         full-width>
@@ -113,7 +113,7 @@
                         <v-btn
                             flat
                             color="primary"
-                            @click="$refs.menuStartTime.save(timeStart)">{{ i18n.ok }}
+                            @click="$refs.menuStartTime.save(startTime)">{{ i18n.ok }}
                         </v-btn>
                     </v-time-picker>
                 </v-menu>
@@ -130,7 +130,7 @@
                     ref="menuEnd"
                     v-model="menuEnd"
                     :close-on-content-click="false"
-                    :return-value.sync="dateEnd"
+                    :return-value.sync="endDate"
                     lazy
                     transition="scale-transition"
                     offset-y
@@ -139,7 +139,7 @@
                     min-width="290px">
                     <template v-slot:activator="{ on }">
                         <v-text-field
-                            v-model="dateEndFormatted"
+                            v-model="endDateFormatted"
                             label="Date"
                             prepend-icon="event"
                             class="pa-0"
@@ -150,7 +150,7 @@
                         />
                     </template>
                     <v-date-picker
-                        v-model="dateEnd"
+                        v-model="endDate"
                         :locale="locale"
                         scrollable
                         full-width>
@@ -163,7 +163,7 @@
                         <v-btn
                             flat
                             color="primary"
-                            @click="$refs.menuEnd.save(dateEnd)">{{ i18n.ok }}
+                            @click="$refs.menuEnd.save(endDate)">{{ i18n.ok }}
                         </v-btn>
                     </v-date-picker>
                 </v-menu>
@@ -175,7 +175,7 @@
                     ref="menuEndTime"
                     v-model="menuEndTime"
                     :close-on-content-click="false"
-                    :return-value.sync="timeEnd"
+                    :return-value.sync="endTime"
                     lazy
                     transition="scale-transition"
                     offset-y
@@ -184,7 +184,7 @@
                     min-width="290px">
                     <template v-slot:activator="{ on }">
                         <v-text-field
-                            v-model="timeEnd"
+                            v-model="endTime"
                             label="Date"
                             prepend-icon="access_time"
                             class="pa-0"
@@ -195,7 +195,7 @@
                         />
                     </template>
                     <v-time-picker
-                        v-model="timeEnd"
+                        v-model="endTime"
                         format="24hr"
                         scrollable
                         full-width>
@@ -209,7 +209,7 @@
                         <v-btn
                             flat
                             color="primary"
-                            @click="$refs.menuEndTime.save(timeEnd)">
+                            @click="$refs.menuEndTime.save(endTime)">
                             {{ i18n.ok }}
                         </v-btn>
                     </v-time-picker>
@@ -277,27 +277,27 @@
                 type: Array,
                 default: () => []
             },
-            dateStart: {
+            startDate: {
                 type: String,
                 default: ""
             },
-            timeStart: {
+            startTime: {
                 type: String,
                 default: ""
             },
-            dateEnd: {
+            endDate: {
                 type: String,
                 default: ""
             },
-            timeEnd: {
+            endTime: {
                 type: String,
                 default: ""
             },
-            dateStartFormatted: {
+            startDateFormatted: {
                 type: String,
                 default: ""
             },
-            dateEndFormatted: {
+            endDateFormatted: {
                 type: String,
                 default: ""
             },
@@ -319,11 +319,11 @@
             }
         },
         watch: {
-            dateStart() {
-                this.dateStartFormatted = this.formatDate(this.dateStart)
+            startDate() {
+                this.startDateFormatted = this.formatDate(this.startDate)
             },
-            dateEnd() {
-                this.dateEndFormatted = this.formatDate(this.dateEnd)
+            endDate() {
+                this.endDateFormatted = this.formatDate(this.endDate)
             }
         },
         mounted: function () {

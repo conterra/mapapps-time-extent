@@ -42,6 +42,14 @@
         ]
     },
     "bundles": {
+        "dn_timeextent":{
+            "TimeExtentWidgetModel": {
+                "startDate": "2000-08-01",
+                "endDate": "2000-10-01",
+                "startTime": "00:00",
+                "endTime": "00:00"
+            }
+        },
         "banner": {
             "BannerWidget": {
                 "label": "Developer Network",
