@@ -13,6 +13,9 @@
     "layout-widgets": [
         {
             "widgetRole": "timeExtentWidget",
+            "sublayout": [
+                "desktop"
+            ],
             "window": {
                 "title": "${windowTitle}",
                 "dockTool": "timeExtentToggleTool",
@@ -22,11 +25,57 @@
                 "resizable": true,
                 "marginBox": {
                     "w": 320,
-                    "h": 330
+                    "h": 330,
+                    "t": 130,
+                    "l": 20
                 },
                 "minSize": {
                     "w": 320,
                     "h": 330
+                },
+                "windowClass": "timeextent-window"
+            }
+        },
+        {
+            "widgetRole": "timeExtentWidget",
+            "sublayout": [
+                "tablet_landscape",
+                "tablet_portrait"
+            ],
+            "window": {
+                "title": "${windowTitle}",
+                "dockTool": "timeExtentToggleTool",
+                "closable": true,
+                "maximizable": true,
+                "minimizeOnClose": true,
+                "resizable": false,
+                "marginBox": {
+                    "w": "100%",
+                    "h": "50%",
+                    "b": 0
+                },
+                "windowClass": "timeextent-window"
+            }
+        },
+        {
+            "widgetRole": "timeExtentWidget",
+            "sublayout": [
+                "mobile_landscape",
+                "mobile_portrait"
+            ],
+            "window": {
+                "title": "${windowTitle}",
+                "dockTool": "timeExtentToggleTool",
+                "dockable": true,
+                "dockingBar": "${id}-dockingBarBottomLeft",
+                "closable": true,
+                "maximizable": true,
+                "minimizeOnClose": true,
+                "resizable": false,
+                "marginBox": {
+                    "w": "100%",
+                    "h": "70%",
+                    "b": 0
                 },
                 "windowClass": "timeextent-window"
             }

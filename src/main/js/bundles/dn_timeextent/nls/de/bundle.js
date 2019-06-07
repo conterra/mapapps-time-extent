@@ -22,6 +22,12 @@ module.exports = {
         tooltip: "Time Extent"
     },
     ui: {
-        filter: "Setze Filter"
+        layer: "Layer:",
+        start: "Startzeitpunkt:",
+        end: "Endzeitpunkt:",
+        ok: "OK",
+        cancel: "Abbrechen",
+        setFilter: "Filter setzen",
+        resetFilter: "Zurücksetzen"
     }
 };

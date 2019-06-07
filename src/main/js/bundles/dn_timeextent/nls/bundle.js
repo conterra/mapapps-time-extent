@@ -23,7 +23,13 @@ module.exports = {
             tooltip: "Time Extent"
         },
         ui: {
-            filter: "Set Filter"
+            layer: "Layer:",
+            start: "Starttime:",
+            end: "Endtime:",
+            ok: "OK",
+            cancel: "Cancel",
+            setFilter: "Set filter",
+            resetFilter: "Reset"
         }
     },
     de: true

@@ -14,27 +14,76 @@
  * limitations under the License.
  */
 import {declare} from "apprt-core/Mutable";
+import TimeExtent from "esri/TimeExtent";
+import FeatureFilter from "esri/views/layers/support/FeatureFilter";
+import Locale from "ct/Locale";
 
 export default declare({
+
+    locale: "en",
     layers: [],
-    selectedLayerId: "",
+    selectedLayerIds: [],
+    dateStartFormatted: "",
+    dateEndFormatted: "",
+    dateStart: "",
+    dateEnd: "",
+    timeStart: "",
+    timeEnd: "",
 
     activate() {
+        this.locale = Locale.getCurrent().getLanguage();
         let layers = this.layers = this._getLayers();
         if (layers.length) {
-            this.selectedLayerId = layers[0].id;
+            this.selectedLayerIds = [layers[0].id];
         }
 
         let mapWidgetModel = this._mapWidgetModel;
         let map = mapWidgetModel.map;
         map.layers.on("after-changes", () => {
             this.layers = this._getLayers();
-            this.selectedLayerId = this.layers[0].id;
+            this.selectedLayerIds = [this.layers[0].id];
         });
+
+        this.dateStart = this._parseDate("08/01/2000");
+        this.dateEnd = this._parseDate("10/01/2000");
+        this.timeStart = "00:00";
+        this.timeEnd = "00:00";
     },
 
     setFilter() {
-        // filter the FeatureLayer
+        const timeExtent = new TimeExtent({
+            start: new Date(this.dateStartFormatted + " " + this.timeStart + ":00 UTC"),
+            end: new Date(this.dateEndFormatted + " " + this.timeEnd + ":00 UTC")
+        });
+
+        let filter = new FeatureFilter({
+            timeExtent: timeExtent
+        });
+
+        let layerIds = this.selectedLayerIds;
+        layerIds.forEach((layerId) => {
+            this._setFilterToLayer(layerId, filter);
+        })
+    },
+
+    resetFilter() {
+        let filter = new FeatureFilter();
+
+        let layerIds = this.selectedLayerIds;
+        layerIds.forEach((layerId) => {
+            this._setFilterToLayer(layerId, filter);
+        })
+    },
+
+    _setFilterToLayer(layerId, filter) {
+        let layer = this._getLayerById(layerId);
+        if (layer) {
+            let mapWidgetModel = this._mapWidgetModel;
+            let view = mapWidgetModel.view;
+            view.whenLayerView(layer).then(function (layerView) {
+                layerView.filter = filter;
+            });
+        }
     },
 
     _getLayers() {
@@ -50,5 +99,18 @@ export default declare({
                 title: layer.title
             }
         })
+    },
+
+    _getLayerById(layerId) {
+        let mapWidgetModel = this._mapWidgetModel;
+        let map = mapWidgetModel.map;
+        return map.findLayerById(layerId);
+    },
+
+    _parseDate(date) {
+        if (!date) return null;
+
+        const [month, day, year] = date.split('/');
+        return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
     }
 })

@@ -40,9 +40,12 @@ export default class TimeExtentWidgetFactory {
         widget.$on('setFilter', () => {
             model.setFilter();
         });
+        widget.$on('resetFilter', () => {
+            model.resetFilter();
+        });
 
         Binding.for(widget, model)
-            .syncAll("layers", "selectedLayerId")
+            .syncAll("locale", "layers", "selectedLayerIds", "dateStart", "dateEnd", "timeStart", "timeEnd", "dateStartFormatted", "dateEndFormatted")
             .enable()
             .syncToLeftNow();
     }
