@@ -32,6 +32,7 @@
             "share-link",
             "omnisearch",
             "locator-store",
+            "layerlist",
             "dn_timeextent"
         ],
         "require": [
