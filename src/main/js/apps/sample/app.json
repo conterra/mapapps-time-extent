@@ -45,10 +45,8 @@
     "bundles": {
         "dn_timeextent":{
             "TimeExtentWidgetModel": {
-                "startDate": "2000-08-01",
-                "endDate": "2000-10-01",
-                "startTime": "00:00",
-                "endTime": "00:00"
+                "start": "08/01/2000 00:00:00 UTC",
+                "end": "10/01/2000 00:00:00 UTC"
             }
         },
         "banner": {

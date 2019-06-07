@@ -121,10 +121,8 @@
             "name": "TimeExtentWidgetModel",
             "provides": "dn_timeextent.TimeExtentWidgetModel",
             "properties": {
-                "startDate": null,
-                "endDate": null,
-                "startTime": null,
-                "endTime": null
+                "start": null,
+                "end": null
             },
             "references": [
                 {

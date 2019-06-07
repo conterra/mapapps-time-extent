@@ -45,7 +45,7 @@ export default class TimeExtentWidgetFactory {
         });
 
         Binding.for(widget, model)
-            .syncAll("locale", "layers", "selectedLayerIds", "startDate", "endDate", "startTime", "endTime", "startDateFormatted", "endDateFormatted")
+            .syncAll("locale", "layers", "selectedLayerIds", "start", "end")
             .enable()
             .syncToLeftNow();
     }

@@ -318,12 +318,44 @@
                 default: false
             }
         },
+        computed: {
+            start: {
+                get: function () {
+                    if (this.startDate === "" || this.startTime === "") {
+                        return new Date();
+                    } else {
+                        return new Date(this.startDate + "T" + this.startTime);
+                    }
+                },
+                set: function (date) {
+                    let isoString = date.toISOString();
+                    this.startDate = isoString.split("T")[0];
+                    let timeArray = isoString.split("T")[1].split(":");
+                    this.startTime = timeArray[0] + ":" + timeArray[1];
+                }
+            },
+            end: {
+                get: function () {
+                    if (this.endDate === "" || this.endTime === "") {
+                        return new Date();
+                    } else {
+                        return new Date(this.endDate + "T" + this.endTime);
+                    }
+                },
+                set: function (date) {
+                    let isoString = date.toISOString();
+                    this.endDate = isoString.split("T")[0];
+                    let timeArray = isoString.split("T")[1].split(":");
+                    this.endTime = timeArray[0] + ":" + timeArray[1];
+                }
+            }
+        },
         watch: {
             startDate() {
-                this.startDateFormatted = this.formatDate(this.startDate)
+                this.startDateFormatted = this.formatDate(this.startDate);
             },
             endDate() {
-                this.endDateFormatted = this.formatDate(this.endDate)
+                this.endDateFormatted = this.formatDate(this.endDate);
             }
         },
         mounted: function () {
