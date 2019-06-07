@@ -44,7 +44,7 @@
                     min-width="290px">
                     <template v-slot:activator="{ on }">
                         <v-text-field
-                            v-model="dateStart"
+                            v-model="dateStartFormatted"
                             label="Date"
                             prepend-icon="event"
                             class="pa-0"
@@ -139,7 +139,7 @@
                     min-width="290px">
                     <template v-slot:activator="{ on }">
                         <v-text-field
-                            v-model="dateEnd"
+                            v-model="dateEndFormatted"
                             label="Date"
                             prepend-icon="event"
                             class="pa-0"
@@ -334,7 +334,7 @@
                 if (!date) return null;
 
                 const [year, month, day] = date.split('-');
-                return `${month}/${day}/${year}`;
+                return `${day}.${month}.${year}`;
             }
         }
     };

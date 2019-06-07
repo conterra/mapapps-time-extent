@@ -44,8 +44,8 @@ export default declare({
             this.selectedLayerIds = [this.layers[0].id];
         });
 
-        this.dateStart = this._parseDate("08/01/2000");
-        this.dateEnd = this._parseDate("10/01/2000");
+        this.dateStart = "2000-08-01";
+        this.dateEnd = "2000-10-01";
         this.timeStart = "00:00";
         this.timeEnd = "00:00";
     },
@@ -105,12 +105,5 @@ export default declare({
         let mapWidgetModel = this._mapWidgetModel;
         let map = mapWidgetModel.map;
         return map.findLayerById(layerId);
-    },
-
-    _parseDate(date) {
-        if (!date) return null;
-
-        const [month, day, year] = date.split('/');
-        return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
     }
 })
