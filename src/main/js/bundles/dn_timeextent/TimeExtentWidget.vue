@@ -14,11 +14,11 @@
             <v-flex md12>
                 <v-select
                     :items="layers"
-                    v-model="selectedLayerIds"
-                    class="pa-0"
                     item-value="id"
                     item-text="title"
                     multiple
+                    v-model="selectedLayerIds"
+                    class="pa-0"
                     single-line
                     hide-details
                 />
@@ -32,8 +32,8 @@
                 md7
                 xs7>
                 <v-menu
-                    ref="menuStart"
-                    v-model="menuStart"
+                    ref="menuStartDate"
+                    v-model="menuStartDate"
                     :close-on-content-click="false"
                     :return-value.sync="startDate"
                     lazy
@@ -63,12 +63,12 @@
                         <v-btn
                             flat
                             color="primary"
-                            @click="menuStart = false">{{ i18n.cancel }}
+                            @click="menuStartDate = false">{{ i18n.cancel }}
                         </v-btn>
                         <v-btn
                             flat
                             color="primary"
-                            @click="$refs.menuStart.save(startDate)">{{ i18n.ok }}
+                            @click="$refs.menuStartDate.save(startDate)">{{ i18n.ok }}
                         </v-btn>
                     </v-date-picker>
                 </v-menu>
@@ -127,8 +127,8 @@
                 md7
                 xs7>
                 <v-menu
-                    ref="menuEnd"
-                    v-model="menuEnd"
+                    ref="menuEndDate"
+                    v-model="menuEndDate"
                     :close-on-content-click="false"
                     :return-value.sync="endDate"
                     lazy
@@ -158,12 +158,12 @@
                         <v-btn
                             flat
                             color="primary"
-                            @click="menuEnd = false">{{ i18n.cancel }}
+                            @click="menuEndDate = false">{{ i18n.cancel }}
                         </v-btn>
                         <v-btn
                             flat
                             color="primary"
-                            @click="$refs.menuEnd.save(endDate)">{{ i18n.ok }}
+                            @click="$refs.menuEndDate.save(endDate)">{{ i18n.ok }}
                         </v-btn>
                     </v-date-picker>
                 </v-menu>
@@ -301,7 +301,7 @@
                 type: String,
                 default: ""
             },
-            menuStart: {
+            menuStartDate: {
                 type: Boolean,
                 default: false
             },
@@ -309,7 +309,7 @@
                 type: Boolean,
                 default: false
             },
-            menuEnd: {
+            menuEndDate: {
                 type: Boolean,
                 default: false
             },
