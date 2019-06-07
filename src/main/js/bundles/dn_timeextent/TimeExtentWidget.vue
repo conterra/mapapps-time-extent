@@ -203,12 +203,14 @@
                         <v-btn
                             flat
                             color="primary"
-                            @click="menuEndTime = false">{{ i18n.cancel }}
+                            @click="menuEndTime = false">
+                            {{ i18n.cancel }}
                         </v-btn>
                         <v-btn
                             flat
                             color="primary"
-                            @click="$refs.menuEndTime.save(timeEnd)">{{ i18n.ok }}
+                            @click="$refs.menuEndTime.save(timeEnd)">
+                            {{ i18n.ok }}
                         </v-btn>
                     </v-time-picker>
                 </v-menu>
@@ -220,7 +222,9 @@
                     block
                     ripple
                     color="primary"
-                    @click="$emit('setFilter', {})">{{ i18n.setFilter }}
+                    @click="$emit('setFilter', {})">
+                    <v-icon dark left>filter</v-icon>
+                    {{ i18n.setFilter }}
                 </v-btn>
             </v-flex>
             <v-flex
@@ -230,7 +234,9 @@
                     block
                     ripple
                     color="primary"
-                    @click="$emit('resetFilter', {})">{{ i18n.resetFilter }}
+                    @click="$emit('resetFilter', {})">
+                    <v-icon dark left>restore</v-icon>
+                    {{ i18n.resetFilter }}
                 </v-btn>
             </v-flex>
         </v-layout>
