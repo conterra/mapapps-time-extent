@@ -3,218 +3,32 @@
         grid-list-md
         fluid
         class="pa-1">
+        <div>{{ i18n.layer }}</div>
+        <v-select
+            :items="layers"
+            item-value="id"
+            item-text="title"
+            multiple
+            v-model="selectedLayerIds"
+            class="pa-0"
+            single-line
+            hide-details
+        />
+        <date-selector-widget
+            :locale="locale"
+            :title="i18n.start"
+            :date.sync="startDate"
+            :time.sync="startTime"
+            :i18n="i18n"/>
+        <date-selector-widget
+            :locale="locale"
+            :title="i18n.end"
+            :date.sync="endDate"
+            :time.sync="endTime"
+            :i18n="i18n"/>
         <v-layout
             row
             wrap>
-            <v-flex
-                md12
-                xs12>
-                {{ i18n.layer }}
-            </v-flex>
-            <v-flex md12>
-                <v-select
-                    :items="layers"
-                    item-value="id"
-                    item-text="title"
-                    multiple
-                    v-model="selectedLayerIds"
-                    class="pa-0"
-                    single-line
-                    hide-details
-                />
-            </v-flex>
-            <v-flex
-                md12
-                xs12>
-                {{ i18n.start }}
-            </v-flex>
-            <v-flex
-                md7
-                xs7>
-                <v-menu
-                    ref="menuStartDate"
-                    v-model="menuStartDate"
-                    :close-on-content-click="false"
-                    :return-value.sync="startDate"
-                    lazy
-                    transition="scale-transition"
-                    offset-y
-                    full-width
-                    max-width="290px"
-                    min-width="290px">
-                    <template v-slot:activator="{ on }">
-                        <v-text-field
-                            v-model="startDateFormatted"
-                            label="Date"
-                            prepend-icon="event"
-                            class="pa-0"
-                            single-line
-                            readonly
-                            hide-details
-                            v-on="on"
-                        />
-                    </template>
-                    <v-date-picker
-                        v-model="startDate"
-                        :locale="locale"
-                        scrollable
-                        full-width>
-                        <v-spacer/>
-                        <v-btn
-                            flat
-                            color="primary"
-                            @click="menuStartDate = false">{{ i18n.cancel }}
-                        </v-btn>
-                        <v-btn
-                            flat
-                            color="primary"
-                            @click="$refs.menuStartDate.save(startDate)">{{ i18n.ok }}
-                        </v-btn>
-                    </v-date-picker>
-                </v-menu>
-            </v-flex>
-            <v-flex
-                md5
-                xs5>
-                <v-menu
-                    ref="menuStartTime"
-                    v-model="menuStartTime"
-                    :close-on-content-click="false"
-                    :return-value.sync="startTime"
-                    lazy
-                    transition="scale-transition"
-                    offset-y
-                    full-width
-                    max-width="290px"
-                    min-width="290px">
-                    <template v-slot:activator="{ on }">
-                        <v-text-field
-                            v-model="startTime"
-                            label="Date"
-                            prepend-icon="access_time"
-                            class="pa-0"
-                            single-line
-                            readonly
-                            hide-details
-                            v-on="on"
-                        />
-                    </template>
-                    <v-time-picker
-                        v-model="startTime"
-                        format="24hr"
-                        scrollable
-                        full-width>
-                        <v-spacer/>
-                        <v-btn
-                            flat
-                            color="primary"
-                            @click="menuStartTime = false">{{ i18n.cancel }}
-                        </v-btn>
-                        <v-btn
-                            flat
-                            color="primary"
-                            @click="$refs.menuStartTime.save(startTime)">{{ i18n.ok }}
-                        </v-btn>
-                    </v-time-picker>
-                </v-menu>
-            </v-flex>
-            <v-flex
-                md12
-                xs12>
-                {{ i18n.end }}
-            </v-flex>
-            <v-flex
-                md7
-                xs7>
-                <v-menu
-                    ref="menuEndDate"
-                    v-model="menuEndDate"
-                    :close-on-content-click="false"
-                    :return-value.sync="endDate"
-                    lazy
-                    transition="scale-transition"
-                    offset-y
-                    full-width
-                    max-width="290px"
-                    min-width="290px">
-                    <template v-slot:activator="{ on }">
-                        <v-text-field
-                            v-model="endDateFormatted"
-                            label="Date"
-                            prepend-icon="event"
-                            class="pa-0"
-                            single-line
-                            readonly
-                            hide-details
-                            v-on="on"
-                        />
-                    </template>
-                    <v-date-picker
-                        v-model="endDate"
-                        :locale="locale"
-                        scrollable
-                        full-width>
-                        <v-spacer/>
-                        <v-btn
-                            flat
-                            color="primary"
-                            @click="menuEndDate = false">{{ i18n.cancel }}
-                        </v-btn>
-                        <v-btn
-                            flat
-                            color="primary"
-                            @click="$refs.menuEndDate.save(endDate)">{{ i18n.ok }}
-                        </v-btn>
-                    </v-date-picker>
-                </v-menu>
-            </v-flex>
-            <v-flex
-                md5
-                xs5>
-                <v-menu
-                    ref="menuEndTime"
-                    v-model="menuEndTime"
-                    :close-on-content-click="false"
-                    :return-value.sync="endTime"
-                    lazy
-                    transition="scale-transition"
-                    offset-y
-                    full-width
-                    max-width="290px"
-                    min-width="290px">
-                    <template v-slot:activator="{ on }">
-                        <v-text-field
-                            v-model="endTime"
-                            label="Date"
-                            prepend-icon="access_time"
-                            class="pa-0"
-                            single-line
-                            readonly
-                            hide-details
-                            v-on="on"
-                        />
-                    </template>
-                    <v-time-picker
-                        v-model="endTime"
-                        format="24hr"
-                        scrollable
-                        full-width>
-                        <v-spacer/>
-                        <v-btn
-                            flat
-                            color="primary"
-                            @click="menuEndTime = false">
-                            {{ i18n.cancel }}
-                        </v-btn>
-                        <v-btn
-                            flat
-                            color="primary"
-                            @click="$refs.menuEndTime.save(endTime)">
-                            {{ i18n.ok }}
-                        </v-btn>
-                    </v-time-picker>
-                </v-menu>
-            </v-flex>
             <v-flex
                 md6
                 xs6>
@@ -245,8 +59,12 @@
 <script>
     import Bindable from "apprt-vue/mixins/Bindable";
 
+    import DateSelectorWidget from "./DateSelectorWidget.vue";
+
     export default {
-        components: {},
+        components: {
+            "date-selector-widget": DateSelectorWidget
+        },
         mixins: [Bindable],
         props: {
             i18n: {
@@ -292,30 +110,6 @@
             endTime: {
                 type: String,
                 default: ""
-            },
-            startDateFormatted: {
-                type: String,
-                default: ""
-            },
-            endDateFormatted: {
-                type: String,
-                default: ""
-            },
-            menuStartDate: {
-                type: Boolean,
-                default: false
-            },
-            menuStartTime: {
-                type: Boolean,
-                default: false
-            },
-            menuEndDate: {
-                type: Boolean,
-                default: false
-            },
-            menuEndTime: {
-                type: Boolean,
-                default: false
             }
         },
         computed: {
@@ -348,14 +142,6 @@
                     let timeArray = isoString.split("T")[1].split(":");
                     this.endTime = timeArray[0] + ":" + timeArray[1];
                 }
-            }
-        },
-        watch: {
-            startDate() {
-                this.startDateFormatted = this.formatDate(this.startDate);
-            },
-            endDate() {
-                this.endDateFormatted = this.formatDate(this.endDate);
             }
         },
         mounted: function () {
