@@ -28,8 +28,8 @@
                         class="pa-0"
                         single-line
                         readonly
-                        hide-details
                         v-on="on"
+                        :rules="[rules.required, rules.wrongDate]"
                     />
                 </template>
                 <v-date-picker
@@ -74,6 +74,7 @@
                         readonly
                         hide-details
                         v-on="on"
+                        :rules="[rules.required, rules.wrongDate]"
                     />
                 </template>
                 <v-time-picker
@@ -114,7 +115,11 @@
                         ok: "OK",
                         cancel: "Cancel",
                         setFilter: "Set filter",
-                        resetFilter: "Reset"
+                        resetFilter: "Reset",
+                        errors: {
+                            required: "Required value!",
+                            wrongDate: "The end date is before the start date!"
+                        }
                     }
                 }
             },
@@ -133,6 +138,10 @@
             time: {
                 type: String,
                 default: ""
+            },
+            error: {
+                type: Boolean,
+                default: false
             }
         },
         data() {
@@ -141,7 +150,11 @@
                 dateValue: this.date,
                 timeValue: this.time,
                 menuDate: false,
-                menuTime: false
+                menuTime: false,
+                rules: {
+                    required: value => !!value || this.i18n.errors.required,
+                    wrongDate: () => !this.error || this.i18n.errors.wrongDate
+                }
             }
         },
         watch: {

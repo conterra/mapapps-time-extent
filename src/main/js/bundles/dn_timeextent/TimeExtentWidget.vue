@@ -19,12 +19,14 @@
             :title="i18n.start"
             :date.sync="startDate"
             :time.sync="startTime"
+            :error="error"
             :i18n="i18n"/>
         <date-selector-widget
             :locale="locale"
             :title="i18n.end"
             :date.sync="endDate"
             :time.sync="endTime"
+            :error="error"
             :i18n="i18n"/>
         <v-layout
             row
@@ -110,6 +112,10 @@
             endTime: {
                 type: String,
                 default: ""
+            },
+            error: {
+                type: Boolean,
+                default: false
             }
         },
         computed: {
@@ -144,6 +150,14 @@
                 }
             }
         },
+        watch: {
+            start: function () {
+                this.checkDates(this.start, this.end);
+            },
+            end: function () {
+                this.checkDates(this.start, this.end);
+            }
+        },
         mounted: function () {
             this.$emit('startup');
         },
@@ -153,6 +167,9 @@
 
                 const [year, month, day] = date.split('-');
                 return `${day}.${month}.${year}`;
+            },
+            checkDates(start, end) {
+                this.error = start.getTime() > end.getTime();
             }
         }
     };

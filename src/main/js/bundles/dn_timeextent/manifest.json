@@ -24,14 +24,14 @@
                 "minimizeOnClose": true,
                 "resizable": true,
                 "marginBox": {
-                    "w": 320,
-                    "h": 330,
+                    "w": 360,
+                    "h": 360,
                     "t": 130,
                     "l": 20
                 },
                 "minSize": {
-                    "w": 320,
-                    "h": 330
+                    "w": 360,
+                    "h": 360
                 },
                 "windowClass": "timeextent-window"
             }

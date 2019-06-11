@@ -28,6 +28,10 @@ module.exports = {
         ok: "OK",
         cancel: "Abbrechen",
         setFilter: "Filter setzen",
-        resetFilter: "Zurücksetzen"
+        resetFilter: "Zurücksetzen",
+        errors: {
+            required: "Benötigter Wert!",
+            wrongDate: "Der Endzeitpunkt liegt vor dem Startzeitpunkt!"
+        }
     }
 };

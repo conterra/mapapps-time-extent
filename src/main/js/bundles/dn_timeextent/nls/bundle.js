@@ -29,7 +29,11 @@ module.exports = {
             ok: "OK",
             cancel: "Cancel",
             setFilter: "Set filter",
-            resetFilter: "Reset"
+            resetFilter: "Reset",
+            errors: {
+                required: "Required value!",
+                wrongDate: "The end date is before the start date!"
+            }
         }
     },
     de: true
