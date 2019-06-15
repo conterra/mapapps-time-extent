@@ -16,7 +16,7 @@
 module.exports = {
     root: {
         bundleName: "Time Extent",
-        bundleDescription: "Time Extent",
+        bundleDescription: "The Time Extent bundle allows users to filter FeatureLayer for a specific time extent.",
         windowTitle: "Time Extent",
         tool: {
             title: "Time Extent",
