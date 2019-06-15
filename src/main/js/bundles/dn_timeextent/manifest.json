@@ -118,7 +118,8 @@
             ]
         },
         {
-            "name": "TimeExtentWidgetModel",
+            "name": "Config",
+            "impl": "./TimeExtentWidgetModel",
             "provides": "dn_timeextent.TimeExtentWidgetModel",
             "properties": {
                 "start": null,

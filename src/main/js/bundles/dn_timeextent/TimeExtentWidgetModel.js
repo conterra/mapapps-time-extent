@@ -17,7 +17,6 @@ import {declare} from "apprt-core/Mutable";
 import TimeExtent from "esri/TimeExtent";
 import FeatureFilter from "esri/views/layers/support/FeatureFilter";
 import Locale from "ct/Locale";
-import moment from "esri/moment";
 
 export default declare({
 
@@ -42,8 +41,8 @@ export default declare({
         });
 
         let properties = this._properties;
-        this.start = moment(properties.start).toDate();
-        this.end = moment(properties.end).toDate();
+        this.start = new Date(properties.start);
+        this.end = new Date(properties.end);
     },
 
     setFilter() {

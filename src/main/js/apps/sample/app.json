@@ -43,7 +43,7 @@
     },
     "bundles": {
         "dn_timeextent":{
-            "TimeExtentWidgetModel": {
+            "Config": {
                 "start": "2000-08-01T00:00Z",
                 "end": "2000-10-04T00:00Z"
             }
