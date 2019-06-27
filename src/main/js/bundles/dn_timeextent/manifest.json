@@ -10,6 +10,127 @@
     "icon": {},
     "license": {},
     "productName": "devnet-mapapps-time-extent",
-    "layout-widgets": [],
-    "components": []
+    "layout-widgets": [
+        {
+            "widgetRole": "timeExtentWidget",
+            "sublayout": [
+                "desktop"
+            ],
+            "window": {
+                "title": "${windowTitle}",
+                "dockTool": "timeExtentToggleTool",
+                "closable": true,
+                "maximizable": true,
+                "minimizeOnClose": true,
+                "resizable": true,
+                "marginBox": {
+                    "w": 360,
+                    "h": 360,
+                    "t": 130,
+                    "l": 20
+                },
+                "minSize": {
+                    "w": 360,
+                    "h": 360
+                },
+                "windowClass": "timeextent-window"
+            }
+        },
+        {
+            "widgetRole": "timeExtentWidget",
+            "sublayout": [
+                "tablet_landscape",
+                "tablet_portrait"
+            ],
+            "window": {
+                "title": "${windowTitle}",
+                "dockTool": "timeExtentToggleTool",
+                "closable": true,
+                "maximizable": true,
+                "minimizeOnClose": true,
+                "resizable": false,
+                "marginBox": {
+                    "w": "100%",
+                    "h": "50%",
+                    "b": 0
+                },
+                "windowClass": "timeextent-window"
+            }
+        },
+        {
+            "widgetRole": "timeExtentWidget",
+            "sublayout": [
+                "mobile_landscape",
+                "mobile_portrait"
+            ],
+            "window": {
+                "title": "${windowTitle}",
+                "dockTool": "timeExtentToggleTool",
+                "dockable": true,
+                "dockingBar": "${id}-dockingBarBottomLeft",
+                "closable": true,
+                "maximizable": true,
+                "minimizeOnClose": true,
+                "resizable": false,
+                "marginBox": {
+                    "w": "100%",
+                    "h": "70%",
+                    "b": 0
+                },
+                "windowClass": "timeextent-window"
+            }
+        }
+    ],
+    "components": [
+        {
+            "name": "TimeExtentToggleTool",
+            "impl": "ct/tools/Tool",
+            "provides": [
+                "ct.tools.Tool"
+            ],
+            "propertiesConstructor": true,
+            "properties": {
+                "id": "timeExtentToggleTool",
+                "title": "${tool.title}",
+                "tooltip": "${tool.tooltip}",
+                "iconClass": "icon-calendar",
+                "toolRole": "toolset",
+                "togglable": true,
+                "rules": {
+                    "noGroup": true
+                }
+            }
+        },
+        {
+            "name": "TimeExtentWidgetFactory",
+            "provides": [
+                "dijit.Widget"
+            ],
+            "instanceFactory": true,
+            "properties": {
+                "widgetRole": "timeExtentWidget"
+            },
+            "references": [
+                {
+                    "name": "_timeExtentWidgetModel",
+                    "providing": "dn_timeextent.TimeExtentWidgetModel"
+                }
+            ]
+        },
+        {
+            "name": "Config",
+            "impl": "./TimeExtentWidgetModel",
+            "provides": "dn_timeextent.TimeExtentWidgetModel",
+            "properties": {
+                "start": null,
+                "end": null
+            },
+            "references": [
+                {
+                    "name": "_mapWidgetModel",
+                    "providing": "map-widget.MapWidgetModel"
+                }
+            ]
+        }
+    ]
 }

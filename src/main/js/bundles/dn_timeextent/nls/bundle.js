@@ -16,13 +16,25 @@
 module.exports = {
     root: {
         bundleName: "Time Extent",
-        bundleDescription: "Time Extent",
+        bundleDescription: "The Time Extent bundle allows users to filter FeatureLayer for a specific time extent.",
         windowTitle: "Time Extent",
         tool: {
             title: "Time Extent",
             tooltip: "Time Extent"
         },
-        ui: {}
+        ui: {
+            layer: "Layer:",
+            start: "Starttime:",
+            end: "Endtime:",
+            ok: "OK",
+            cancel: "Cancel",
+            setFilter: "Set filter",
+            resetFilter: "Reset",
+            errors: {
+                required: "Required value!",
+                wrongDate: "The end date is before the start date!"
+            }
+        }
     },
     de: true
 };

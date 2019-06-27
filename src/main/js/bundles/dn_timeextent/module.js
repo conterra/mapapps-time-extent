@@ -14,4 +14,6 @@
  * limitations under the License.
  */
 import ".";
+import "./TimeExtentWidgetFactory";
+import "./TimeExtentWidgetModel";
 import "ct/tools/Tool";

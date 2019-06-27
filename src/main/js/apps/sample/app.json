@@ -23,7 +23,6 @@
             "toolset",
             "banner",
             "basemaptoggler",
-            "custominfo",
             "viewmodeswitcher",
             "mapnavigation",
             "popups-default",
@@ -43,10 +42,16 @@
         ]
     },
     "bundles": {
+        "dn_timeextent":{
+            "Config": {
+                "start": "2000-08-01T00:00Z",
+                "end": "2000-10-04T00:00Z"
+            }
+        },
         "banner": {
             "BannerWidget": {
                 "label": "Developer Network",
-                "image": "https://www.conterra.de/~/media/conterra/images/site_logos/conterra-logo.ashx",
+                "image": "https://conterra.de/themes/conterra/logo.svg",
                 "imagePosition": "above",
                 "link": "http://developernetwork.conterra.de"
             }
@@ -56,68 +61,29 @@
                 "nextBasemap": "hybrid"
             }
         },
-        "custominfo": {
-            "CustomInfoToggleTool": [
-                {
-                    "widgetSettings": {
-                        "content": "<p>Dies ist ein Beispiel für ein Impressum.</p>",
-                        "window": {
-                            "marginBox": {
-                                "w": 320,
-                                "h": 500
-                            },
-                            "draggable": true,
-                            "closable": true,
-                            "modal": true,
-                            "maximizable": false,
-                            "resizable": true,
-                            "title": "Impressum"
-                        }
-                    },
-                    "type": "IMPRINT",
-                    "toolClass": "ctInfo",
-                    "title": "Impressum",
-                    "tooltip": "Zeige Impressum",
-                    "tooltipPositions": [
-                        "after",
-                        "above",
-                        "below",
-                        "before"
-                    ],
-                    "iconClass": "icon-custom-info-imprint",
-                    "togglable": true,
-                    "id": "IMPRINT_Imprint_CustomInfoTool"
-                },
-                {
-                    "widgetSettings": {
-                        "content": "<p>Dies ist ein Beispiel für ein Impressum.</p>",
-                        "window": {
-                            "marginBox": {
-                                "w": "100%",
-                                "h": "100%"
-                            },
-                            "draggable": true,
-                            "closable": true,
-                            "modal": true,
-                            "maximizable": false,
-                            "resizable": true,
-                            "title": "Impressum"
-                        }
-                    },
-                    "type": "IMPRINT",
-                    "toolClass": "ctInfo",
-                    "title": "Impressum",
-                    "tooltip": "Zeige Impressum",
-                    "iconClass": "icon-custom-info-imprint",
-                    "togglable": true,
-                    "id": "IMPRINT_Imprint_CustomInfoTool_mobile"
-                }
-            ]
-        },
         "map-init": {
             "Config": {
                 "map": {
-                    "layers": [],
+                    "layers": [
+                        {
+                            "id": "hurricane",
+                            "title": "Atlantic Hurricanes 2000",
+                            "type": "AGS_FEATURE",
+                            "url": "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Hurricanes/MapServer/0"
+                        },
+                        {
+                            "id": "buchdrucker",
+                            "title": "Gefährdung Buchdrucker",
+                            "type": "AGS_FEATURE",
+                            "url": "https://www.fovgis.bayern.de/arcgis/rest/services/baywis_wsm/borki_gef/MapServer/1"
+                        },
+                        {
+                            "id": "kupferstecher",
+                            "title": "Gefährdung Kupferstecher",
+                            "type": "AGS_FEATURE",
+                            "url": "https://www.fovgis.bayern.de/arcgis/rest/services/baywis_wsm/borki_gef/MapServer/2"
+                        }
+                    ],
                     "basemap": "streets",
                     "ground": {
                         "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
@@ -127,10 +93,10 @@
                 "view": {
                     "viewmode": "2D",
                     "extent": {
-                        "xmin": 600000,
-                        "ymin": 5800000,
-                        "xmax": 1700000,
-                        "ymax": 7600000,
+                        "xmin": -18834083,
+                        "ymin": -1105585,
+                        "xmax": 733795,
+                        "ymax": 10635142,
                         "spatialReference": 3857
                     }
                 }
@@ -221,8 +187,7 @@
                         "tools": [
                             "printingToggleTool",
                             "sharelinkTool",
-                            "IMPRINT_Imprint_CustomInfoTool",
-                            "IMPRINT_Imprint_CustomInfoTool_mobile"
+                            "timeExtentToggleTool"
                         ],
                         "registerWidget": {
                             "widgetRole": "drawer_button"
@@ -230,6 +195,13 @@
                         "container": "ignore",
                         "windowType": "drawer_left"
                     }
+                ]
+            }
+        },
+        "toolrules": {
+            "ToolActiveStateManager": {
+                "activateOnStartToolIds": [
+                    "timeExtentToggleTool"
                 ]
             }
         }
