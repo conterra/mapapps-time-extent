@@ -25,26 +25,26 @@ export default class TimeExtentWidgetFactory {
     }
 
     createInstance() {
-        return new VueDijit(this.widget);
+        return new VueDijit(this.vm);
     }
 
     _initComponent() {
-        const widget = this.widget = new Vue(TimeExtentWidget);
+        const vm = this.vm = new Vue(TimeExtentWidget);
         let model = this._timeExtentWidgetModel;
-        widget.i18n = this._i18n.get().ui;
+        vm.i18n = this._i18n.get().ui;
 
         // listen to view model methods
-        widget.$on('startup', () => {
+        vm.$on('startup', () => {
 
         });
-        widget.$on('setFilter', () => {
+        vm.$on('setFilter', () => {
             model.setFilter();
         });
-        widget.$on('resetFilter', () => {
+        vm.$on('resetFilter', () => {
             model.resetFilter();
         });
 
-        Binding.for(widget, model)
+        Binding.for(vm, model)
             .syncAll("selectedLayerIds", "start", "end", "activeTool")
             .syncAllToLeft("layers", "locale")
             .enable()
