@@ -13,6 +13,7 @@
             class="pa-0"
             single-line
             hide-details
+            ref="selectedLayerIdsSelect"
         />
         <date-selector-widget
             :locale="locale"
@@ -116,6 +117,10 @@
             error: {
                 type: Boolean,
                 default: false
+            },
+            activeTool: {
+                type: Boolean,
+                default: false
             }
         },
         computed: {
@@ -156,6 +161,11 @@
             },
             end: function () {
                 this.checkDates(this.start, this.end);
+            },
+            activeTool: function (value) {
+                if(!value){
+                    this.$refs.selectedLayerIdsSelect.isMenuActive = false;
+                }
             }
         },
         mounted: function () {

@@ -17,6 +17,7 @@ import {declare} from "apprt-core/Mutable";
 import TimeExtent from "esri/TimeExtent";
 import FeatureFilter from "esri/views/layers/support/FeatureFilter";
 import Locale from "ct/Locale";
+import Connect from "ct/_Connect";
 
 export default declare({
 
@@ -25,6 +26,7 @@ export default declare({
     selectedLayerIds: [],
     start: new Date(),
     end: new Date(),
+    activeTool: false,
 
     activate() {
         this.locale = Locale.getCurrent().getLanguage();
@@ -43,6 +45,15 @@ export default declare({
         let properties = this._properties;
         this.start = new Date(properties.start);
         this.end = new Date(properties.end);
+
+        const connect = new Connect();
+        connect.connect(this._tool, "onActivate", () => {
+            this.activeTool = true;
+        });
+        connect.connect(this._tool, "onDeactivate", () => {
+            this.activeTool = false;
+        });
+        this.activeTool = true;
     },
 
     setFilter() {
