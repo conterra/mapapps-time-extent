@@ -35,6 +35,7 @@
                 <v-date-picker
                     v-model="dateValue"
                     :locale="locale"
+                    color="primary"
                     scrollable
                     full-width>
                     <v-spacer/>
@@ -80,6 +81,7 @@
                 <v-time-picker
                     v-model="timeValue"
                     format="24hr"
+                    color="primary"
                     scrollable
                     full-width>
                     <v-spacer/>
