@@ -11,10 +11,10 @@ https://demos.conterra.de/mapapps/resources/apps/downloads_timeextent/index.html
 2. After that, add a time-aware FeatureLayer to your app.
 3. Finally you can configure your time extent bundle.
 
-### Configurable Components of dn_timeslider:
+### Configurable Components of dn_timesextent:
 #### Config:
 ```
-"dn_timeslider": {
+"dn_timesextent": {
     "Config": {
         "start": "2000-08-01T00:00Z",
         "end": "2000-10-04T00:00Z"
