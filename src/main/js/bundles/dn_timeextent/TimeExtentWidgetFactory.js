@@ -30,7 +30,7 @@ export default class TimeExtentWidgetFactory {
 
     _initComponent() {
         const vm = this.vm = new Vue(TimeExtentWidget);
-        let model = this._timeExtentWidgetModel;
+        const model = this._timeExtentWidgetModel;
         vm.i18n = this._i18n.get().ui;
 
         // listen to view model methods

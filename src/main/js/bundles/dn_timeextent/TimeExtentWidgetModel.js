@@ -30,19 +30,19 @@ export default declare({
 
     activate() {
         this.locale = Locale.getCurrent().getLanguage();
-        let layers = this.layers = this._getLayers();
+        const layers = this.layers = this._getLayers();
         if (layers.length) {
             this.selectedLayerIds = [layers[0].id];
         }
 
-        let mapWidgetModel = this._mapWidgetModel;
-        let map = mapWidgetModel.map;
+        const mapWidgetModel = this._mapWidgetModel;
+        const map = mapWidgetModel.map;
         map.layers.on("after-changes", () => {
             this.layers = this._getLayers();
             this.selectedLayerIds = [this.layers[0].id];
         });
 
-        let properties = this._properties;
+        const properties = this._properties;
         this.start = new Date(properties.start);
         this.end = new Date(properties.end);
 
@@ -64,37 +64,37 @@ export default declare({
             end: this.end
         });
 
-        let filter = new FeatureFilter({
+        const filter = new FeatureFilter({
             timeExtent: timeExtent
         });
 
-        let layerIds = this.selectedLayerIds;
+        const layerIds = this.selectedLayerIds;
         layerIds.forEach((layerId) => {
             this._setFilterToLayer(layerId, filter);
         })
     },
 
     resetFilter() {
-        let properties = this._properties;
+        const properties = this._properties;
         this.start = new Date(properties.start);
         this.end = new Date(properties.end);
         this.setFilter();
     },
 
     removeFilter() {
-        let filter = new FeatureFilter();
+        const filter = new FeatureFilter();
 
-        let layerIds = this.selectedLayerIds;
+        const layerIds = this.selectedLayerIds;
         layerIds.forEach((layerId) => {
             this._setFilterToLayer(layerId, filter);
         });
     },
 
     _setFilterToLayer(layerId, filter) {
-        let layer = this._getLayerById(layerId);
+        const layer = this._getLayerById(layerId);
         if (layer) {
-            let mapWidgetModel = this._mapWidgetModel;
-            let view = mapWidgetModel.view;
+            const mapWidgetModel = this._mapWidgetModel;
+            const view = mapWidgetModel.view;
             view.whenLayerView(layer).then(function (layerView) {
                 layerView.filter = filter;
             });
@@ -102,12 +102,10 @@ export default declare({
     },
 
     _getLayers() {
-        let mapWidgetModel = this._mapWidgetModel;
-        let map = mapWidgetModel.map;
-        let layers = map.layers.toArray();
-        let featureLayers = layers.filter((layer) => {
-            return layer.type === "feature";
-        });
+        const mapWidgetModel = this._mapWidgetModel;
+        const map = mapWidgetModel.map;
+        const layers = map.layers.toArray();
+        const featureLayers = layers.filter((layer) => layer.type === "feature");
         return featureLayers.map((layer) => {
             return {
                 id: layer.id,
@@ -117,8 +115,8 @@ export default declare({
     },
 
     _getLayerById(layerId) {
-        let mapWidgetModel = this._mapWidgetModel;
-        let map = mapWidgetModel.map;
+        const mapWidgetModel = this._mapWidgetModel;
+        const map = mapWidgetModel.map;
         return map.findLayerById(layerId);
     }
 })

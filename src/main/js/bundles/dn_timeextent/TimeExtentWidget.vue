@@ -19,18 +19,19 @@
     <v-container
         grid-list-md
         fluid
-        class="pa-1">
+        class="pa-1"
+    >
         <div>{{ i18n.layer }}</div>
         <v-select
+            ref="selectedLayerIdsSelect"
+            v-model="selectedLayerIds"
             :items="layers"
             item-value="id"
             item-text="title"
             multiple
-            v-model="selectedLayerIds"
             class="pa-0"
             single-line
             hide-details
-            ref="selectedLayerIdsSelect"
         />
         <date-selector-widget
             :locale="locale"
@@ -38,14 +39,16 @@
             :date.sync="startDate"
             :time.sync="startTime"
             :error="error"
-            :i18n="i18n"/>
+            :i18n="i18n"
+        />
         <date-selector-widget
             :locale="locale"
             :title="i18n.end"
             :date.sync="endDate"
             :time.sync="endTime"
             :error="error"
-            :i18n="i18n"/>
+            :i18n="i18n"
+        />
         <v-alert
             :value="error"
             type="error"
@@ -54,29 +57,44 @@
         </v-alert>
         <v-layout
             row
-            wrap>
+            wrap
+        >
             <v-flex
                 md6
-                xs6>
+                xs6
+            >
                 <v-btn
                     block
                     ripple
                     color="primary"
                     :disabled="error"
-                    @click="$emit('setFilter', {})">
-                    <v-icon dark left>filter</v-icon>
+                    @click="$emit('setFilter', {})"
+                >
+                    <v-icon
+                        dark
+                        left
+                    >
+                        filter
+                    </v-icon>
                     {{ i18n.setFilter }}
                 </v-btn>
             </v-flex>
             <v-flex
                 md6
-                xs6>
+                xs6
+            >
                 <v-btn
                     block
                     ripple
                     color="primary"
-                    @click="$emit('resetFilter', {})">
-                    <v-icon dark left>restore</v-icon>
+                    @click="$emit('resetFilter', {})"
+                >
+                    <v-icon
+                        dark
+                        left
+                    >
+                        restore
+                    </v-icon>
                     {{ i18n.resetFilter }}
                 </v-btn>
             </v-flex>
@@ -157,9 +175,9 @@
                     }
                 },
                 set: function (date) {
-                    let isoString = date.toISOString();
+                    const isoString = date.toISOString();
                     this.startDate = isoString.split("T")[0];
-                    let timeArray = isoString.split("T")[1].split(":");
+                    const timeArray = isoString.split("T")[1].split(":");
                     this.startTime = timeArray[0] + ":" + timeArray[1];
                 }
             },
@@ -172,9 +190,9 @@
                     }
                 },
                 set: function (date) {
-                    let isoString = date.toISOString();
+                    const isoString = date.toISOString();
                     this.endDate = isoString.split("T")[0];
-                    let timeArray = isoString.split("T")[1].split(":");
+                    const timeArray = isoString.split("T")[1].split(":");
                     this.endTime = timeArray[0] + ":" + timeArray[1];
                 }
             }
