@@ -31,6 +31,8 @@
             "printing",
             "share-link",
             "omnisearch",
+            "legend",
+            "toc",
             "locator-store",
             "dn_timeextent"
         ],
@@ -42,10 +44,10 @@
         ]
     },
     "bundles": {
-        "dn_timeextent":{
+        "dn_timeextent": {
             "Config": {
-                "start": "2000-08-01T00:00Z",
-                "end": "2000-10-04T00:00Z"
+                "start": "2019-09-01T00:00Z",
+                "end": "2019-09-30T00:00Z"
             }
         },
         "banner": {
@@ -70,13 +72,15 @@
                             "id": "hurricane",
                             "title": "Atlantic Hurricanes 2000",
                             "type": "AGS_FEATURE",
-                            "url": "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Hurricanes/MapServer/0"
+                            "url": "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Hurricanes/MapServer/0",
+                            "visible": false
                         },
                         {
                             "id": "buchdrucker",
                             "title": "Gefährdung Buchdrucker",
                             "type": "AGS_FEATURE",
-                            "url": "https://www.fovgis.bayern.de/arcgis/rest/services/baywis_wsm/borki_gef/MapServer/1"
+                            "url": "https://www.fovgis.bayern.de/arcgis/rest/services/baywis_wsm/borki_gef/MapServer/1",
+                            "visible": false
                         },
                         {
                             "id": "kupferstecher",
@@ -93,12 +97,13 @@
                 },
                 "view": {
                     "viewmode": "2D",
-                    "extent": {
-                        "xmin": -18834083,
-                        "ymin": -1105585,
-                        "xmax": 733795,
-                        "ymax": 10635142,
-                        "spatialReference": 3857
+                    "scale": 2311162.217155,
+                    "center": {
+                        "x": 1284142.2241530868,
+                        "y": 6270282.209104431,
+                        "spatialReference": {
+                            "wkid": 3857
+                        }
                     }
                 }
             }
