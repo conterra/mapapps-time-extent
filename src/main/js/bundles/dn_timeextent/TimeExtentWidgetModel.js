@@ -49,9 +49,11 @@ export default declare({
         const connect = new Connect();
         connect.connect(this._tool, "onActivate", () => {
             this.activeTool = true;
+            this.setFilter();
         });
         connect.connect(this._tool, "onDeactivate", () => {
             this.activeTool = false;
+            this.resetFilter();
         });
         this.activeTool = true;
     },
