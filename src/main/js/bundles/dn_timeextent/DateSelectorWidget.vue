@@ -46,7 +46,7 @@
                         single-line
                         readonly
                         v-on="on"
-                        :rules="[rules.required, rules.wrongDate]"
+                        :rules="[rules.required]"
                     />
                 </template>
                 <v-date-picker
@@ -92,7 +92,7 @@
                         readonly
                         hide-details
                         v-on="on"
-                        :rules="[rules.required, rules.wrongDate]"
+                        :rules="[rules.required]"
                     />
                 </template>
                 <v-time-picker
@@ -171,8 +171,7 @@
                 menuDate: false,
                 menuTime: false,
                 rules: {
-                    required: value => !!value || this.i18n.errors.required,
-                    wrongDate: () => !this.error || this.i18n.errors.wrongDate
+                    required: value => !!value || this.i18n.errors.required
                 }
             }
         },

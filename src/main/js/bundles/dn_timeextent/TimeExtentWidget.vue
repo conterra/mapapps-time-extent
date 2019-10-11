@@ -46,6 +46,12 @@
             :time.sync="endTime"
             :error="error"
             :i18n="i18n"/>
+        <v-alert
+            :value="error"
+            type="error"
+        >
+            {{ this.i18n.errors.wrongDate }}
+        </v-alert>
         <v-layout
             row
             wrap>
@@ -180,7 +186,7 @@
                 this.checkDates(this.start, this.end);
             },
             activeTool: function (value) {
-                if(!value){
+                if (!value) {
                     this.$refs.selectedLayerIdsSelect.isMenuActive = false;
                 }
             }

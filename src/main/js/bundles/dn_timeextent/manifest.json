@@ -25,13 +25,13 @@
                 "resizable": true,
                 "marginBox": {
                     "w": 360,
-                    "h": 370,
+                    "h": 440,
                     "t": 130,
                     "l": 20
                 },
                 "minSize": {
                     "w": 360,
-                    "h": 370
+                    "h": 440
                 },
                 "windowClass": "timeextent-window"
             }
