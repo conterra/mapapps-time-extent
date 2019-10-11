@@ -53,7 +53,7 @@ export default declare({
         });
         connect.connect(this._tool, "onDeactivate", () => {
             this.activeTool = false;
-            this.resetFilter();
+            this.removeFilter();
         });
         this.activeTool = true;
     },
@@ -75,16 +75,19 @@ export default declare({
     },
 
     resetFilter() {
+        let properties = this._properties;
+        this.start = new Date(properties.start);
+        this.end = new Date(properties.end);
+        this.setFilter();
+    },
+
+    removeFilter() {
         let filter = new FeatureFilter();
 
         let layerIds = this.selectedLayerIds;
         layerIds.forEach((layerId) => {
             this._setFilterToLayer(layerId, filter);
         });
-
-        let properties = this._properties;
-        this.start = new Date(properties.start);
-        this.end = new Date(properties.end);
     },
 
     _setFilterToLayer(layerId, filter) {
