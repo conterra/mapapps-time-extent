@@ -62,6 +62,7 @@
                     block
                     ripple
                     color="primary"
+                    :disabled="error"
                     @click="$emit('setFilter', {})">
                     <v-icon dark left>filter</v-icon>
                     {{ i18n.setFilter }}
