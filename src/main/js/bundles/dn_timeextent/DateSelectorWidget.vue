@@ -177,6 +177,12 @@
             }
         },
         watch: {
+            date(date) {
+                this.dateValue = date;
+            },
+            time(time) {
+                this.timeValue = time;
+            },
             dateValue() {
                 this.dateFormatted = this.formatDate(this.dateValue);
                 this.$emit('update:date', this.dateValue)
