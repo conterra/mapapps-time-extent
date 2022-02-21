@@ -89,7 +89,7 @@
                             "url": "https://www.fovgis.bayern.de/arcgis/rest/services/baywis_wsm/borki_gef/MapServer/2"
                         }
                     ],
-                    "basemap": "streets",
+                    "basemap": "streets-vector",
                     "ground": {
                         "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
                         "type": "ELEVATION"
