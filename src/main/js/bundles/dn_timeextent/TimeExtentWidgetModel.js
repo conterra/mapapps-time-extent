@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 con terra GmbH (info@conterra.de)
+ * Copyright (C) 2023 con terra GmbH (info@conterra.de)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  */
 import {declare} from "apprt-core/Mutable";
 import TimeExtent from "esri/TimeExtent";
-import FeatureFilter from "esri/views/layers/support/FeatureFilter";
+import FeatureFilter from "esri/layers/support/FeatureFilter";
 import Locale from "ct/Locale";
 import Connect from "ct/_Connect";
 
@@ -71,7 +71,7 @@ export default declare({
         const layerIds = this.selectedLayerIds;
         layerIds.forEach((layerId) => {
             this._setFilterToLayer(layerId, filter);
-        })
+        });
     },
 
     resetFilter() {
@@ -110,8 +110,8 @@ export default declare({
             return {
                 id: layer.id,
                 title: layer.title
-            }
-        })
+            };
+        });
     },
 
     _getLayerById(layerId) {
@@ -119,4 +119,4 @@ export default declare({
         const map = mapWidgetModel.map;
         return map.findLayerById(layerId);
     }
-})
+});

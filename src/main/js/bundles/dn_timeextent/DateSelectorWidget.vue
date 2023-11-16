@@ -1,6 +1,6 @@
 <!--
 
-    Copyright (C) 2019 con terra GmbH (info@conterra.de)
+    Copyright (C) 2023 con terra GmbH (info@conterra.de)
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -139,7 +139,7 @@
                             required: "Required value!",
                             wrongDate: "The end date is before the start date!"
                         }
-                    }
+                    };
                 }
             },
             title: {
@@ -173,7 +173,7 @@
                 rules: {
                     required: value => !!value || this.i18n.errors.required
                 }
-            }
+            };
         },
         watch: {
             date(date) {
@@ -184,10 +184,10 @@
             },
             dateValue() {
                 this.dateFormatted = this.formatDate(this.dateValue);
-                this.$emit('update:date', this.dateValue)
+                this.$emit('update:date', this.dateValue);
             },
             timeValue() {
-                this.$emit('update:time', this.timeValue)
+                this.$emit('update:time', this.timeValue);
             }
         },
         beforeMount: function () {
@@ -195,7 +195,9 @@
         },
         methods: {
             formatDate(date) {
-                if (!date) return null;
+                if (!date) {
+                    return null;
+                }
 
                 const [year, month, day] = date.split('-');
                 return `${day}.${month}.${year}`;
