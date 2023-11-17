@@ -5,7 +5,7 @@ The Time Extent bundle allows users to filter FeatureLayer for a specific time e
 https://demos.conterra.de/mapapps/resources/apps/downloads_timeextent/index.html
 
 ## Installation Guide
-**Requirement: map.apps 4.7.0**
+**Requirement: map.apps 4.12.0**
 
 1. First, you need to add the bundle "dn_timeextent" to your app.
 2. After that, add a time-aware FeatureLayer to your app.
