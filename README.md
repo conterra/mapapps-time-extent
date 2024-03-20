@@ -1,3 +1,4 @@
+⚠️ This bundle is no longer in active development.
 # Time Extent Bundle
 The Time Extent bundle allows users to filter FeatureLayer for a specific time extent.
 
